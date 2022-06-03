@@ -13,7 +13,7 @@ def to_feet(listy):
 
 
 def map():
-    map = folium.Map(location=[38.58, -99.09], zoom_start=6, titles="Stamen Terrain")
+    map = folium.Map(location=[41.984812, -117.344886], zoom_start=6, titles="Stamen Terrain", min_zoom='3', max_zoom='10',)
     return map
 
 
@@ -29,7 +29,7 @@ def make_map():
     tipe = list(data['TYPE'])
     lat = list(data["LAT"])
     lon = list(data['LON'])
-    
+
     for lt, ln, name, elev, tipe in zip(lat, lon, name, elev, tipe):
         fg.add_child(folium.Marker(location=[lt, ln], popup=f'Name: {name} \nType: {tipe} \nElevation: {elev} feet', icon=folium.Icon(color='green')))
     map.add_child(fg)
@@ -37,4 +37,5 @@ def make_map():
     return map
 
 
-make_map()
+if __name__ == '__main__':
+    make_map()
